@@ -186,11 +186,15 @@ router.post('/insertar-factura', (req, res) => {
         var detalle = {
             id_factura: maestro.insertId,
             id_producto: '1,2,3',
-            cantidad: '3,1,5'
+            cantidad: '3,1,5' // igual aca
+            //  precioUni:'5.34,45.6,34' // hacer el calculo en el frontend y solo enviarlo al backend, debido a que el
+            // precio unitario ya debe mostrarse en el frontend
         };
+        // aqui reparto los string en arreglos con la ayuda de la funcion split
         var productos = detalle.id_producto.split(',');
         var cantidad = detalle.cantidad.split(',');
         for (let i = 0; i < productos.length; i++) {
+            // este ciclo permite registrar los detalles en su respectiva posicion
             const query = ` INSERT INTO detalle_factura VALUES (null,'${detalle.id_factura}','${productos[i]}','${cantidad[i]}')`;
             mysql_1.default.ejecutarQuery(query, (err, detalle) => {
                 if (err) {

@@ -58,6 +58,7 @@ CREATE TABLE `detalle_factura` (
   `id_factura` int(10) NOT NULL ,
   `id_producto` int(20) not NULL,
   `cantidad` int(10) NOT NULL,
+  `precio_unitario` double(20,2) NOT NULL, -- falto agregar este campo calcularlo en el backend complicado o enviarlo desde el backend calculado
   PRIMARY KEY (`id_detalle`) USING BTREE,
   KEY `fk_producto` (`id_producto`) USING BTREE,
   KEY `fk_factura` (`id_factura`) USING BTREE,
